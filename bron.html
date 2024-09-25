@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TopMeal - Блюда. Десерты.Бронь</title>
+    <link href="css/bootstrap.min.css"  rel="stylesheet">
+
+    <link rel="stylesheet" href="css\bootts.css">
+    
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+         <div class="header-menu">
+   
+           <div class="nav" >
+               <a class="it" href="index.html1.html">ГЛАВНАЯ</a>
+               <a class="it" href="menu.html">МЕНЮ</a>
+               <a class="it" href="us.html">О НАС</a>
+               <a class="it" href="bron.html">БРОНЬ</a> 
+           </div>
+           <div class="cart">
+               <a href="corsina.html">
+                   <img class="cart-img"src="изобр\корзинка.jpg" alt=""width="30" height="30"/>
+               </a>
+           </div>
+           <div class="phone">
+               <div class="number"><a class="num"href="#">+79907775010</a></div>
+           </div>
+           <div class="textph">-cвязь с нами </div>
+           <div class="sss"> <a class="s" href="bron.html">cвяжитесь с нами для бронирования</a></div>
+         </div>
+        </div>
+      </div>
+      <h4> <hr>
+   Бронирование столика в ресторане
+     <hr> </h4>
+     <div class="labl">
+      <form action="submit_reservation.php" method="post">
+      <label for="name">Имя:</label>
+      <input type="text" id="name" name="name" required><br><br>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required><br><br>
+
+      <label for="phone">Телефон:</label>
+      <input type="tel" id="phone" name="phone" required><br><br>
+
+      <label for="date">Дата:</label>
+      <input type="date" id="date" name="date" required><br><br>
+
+      <label for="time">Время:</label>
+      <input type="time" id="time" name="time" required><br><br>
+
+      <label for="guests">Количество гостей:</label>
+      <input type="number" id="guests" name="guests" min="1" required><br><br>
+
+      <label for="comments">Дополнительные комментарии:</label><br>
+      <textarea id="comments" name="comments" rows="4"></textarea><br><br>
+     
+      <input type="submit" id="submit-btn" value="Забронировать столик">
+      <script>
+        document.getElementById('submit-btn').addEventListener('click', function(event) {
+        // Проверяем, что все обязательные поля заполнены
+        let name = document.getElementById('name').value;
+        let email = document.getElementById('email').value;
+        let phone = document.getElementById('phone').value;
+        let date = document.getElementById('date').value;
+        let time = document.getElementById('time').value;
+        let guests = document.getElementById('guests').value;
+        
+        if (name !== '' && email !== '' && phone !== '' && date !== '' && time !== '' && guests !== '') {
+        alert('Забронировано! Спасибо за вашу заявку.');
+         window.location.href = 'index.html1.html'}
+        else {
+        alert('Пожалуйста, заполните все обязательные поля.');
+        event.preventDefault(); 
+        }
+        });
+        </script> 
+    </div>
+<hr>
+<footer>
+    <p>Компания © TopMeal. Все права защищены.</p>
+    <p>
+        Почта: <a href="mailto:topmeal@yandex.ru">topmeal@yandex.ru</a>.
+      </p>
+  </footer>
+
+<script src="js/bootstrap.bundle.min.js" ></script>
+  
+
+</body>
+</html>

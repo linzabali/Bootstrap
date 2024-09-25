@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css"  rel="stylesheet">
+    <title>TopMeal - Блюда. Десерты.Меню</title>
+    <link rel="stylesheet" href="css\bootts.css">
+</head>
+<body>
+    <div class="menu">
+            <div class="container">
+             <div class="header-menu">
+       
+               <div class="nav" >
+                   <a class="it" href="index.html1.html">ГЛАВНАЯ</a>
+                   <a class="it" href="menu.html">МЕНЮ</a>
+                   <a class="it" href="us.html">О НАС</a>
+                   <a class="it" href="bron.html">БРОНЬ</a> 
+               </div>
+               <div class="cart">
+                   <a href="corsina.html">
+                       <img class="cart-img"src="изобр\корзинка.jpg" alt=""width="30" height="30"/>
+                   </a>
+               </div>
+               <div class="phone">
+                   <div class="number"><a class="num"href="#">+79907775010</a></div>
+               </div>
+               <div class="textph">-cвязь с нами </div>
+               <div class="sss"> <a class="s" href="bron.html">cвяжитесь с нами для бронирования</a></div>
+             </div>
+            </div>
+          </div>
+           
+    
+        </div>
+            <div class="menutitle">
+                <hr>
+                Меню
+                <hr>
+            </div>
+            <div class="menu-items">
+                <div class="menu-item" data-id="1">
+                    <div class="menu-img">
+                        <img src="изобр\блины.jpg"lt=""width="300" height="250" class="menu-im">
+
+                    </div>
+                    <div class="menutxt">
+                        Блины с ягодами 
+                        <br><div class="price" >1200 рублей </div>
+                    </div>
+                    <div class="menus">
+                        восхитительный десерт
+                    </div>
+                    <div class="menubutt">
+                        <a href="corsina.html" class="menub">
+                            ЗАКАЗАТЬ
+                        </a>
+                        
+                    </div>
+                </div>   
+                <div class="menu-item" data-id="2">   
+                    <div class="menu-img">
+                        <img src="изобр\пицца4.jpg"lt=""width="300" height="250" class="menu-im">
+
+                    </div>
+                    <div class="menutxt">
+                        Пицца "4 сыра" 
+                       <br> <div class="price" > 850 рублей </div>
+                    </div>
+                    <div class="menus">
+                        оочень сырная пицца
+                    </div>
+                    <div class="menubutt">
+                        <a href="corsina.html" class="menub">
+                            ЗАКАЗАТЬ
+                        </a>
+                        
+                    </div>
+                </div>   
+                <div class="menu-item" data-id="3">    
+                    <div class="menu-img">
+                        <img src="изобр\тирамису.jpeg"lt=""width="300" height="250" class="menu-im">
+
+                    </div>
+                    <div class="menutxt">
+                       Тирамису 
+                       <br> <div class="price">700 рублей </div> 
+                    </div>
+                    <div class="menus">
+                       нежный, итальянский десерт
+                    </div>
+                    <div class="menubutt">
+                        <a href="corsina.html" class="menub">
+                            ЗАКАЗАТЬ
+                        </a>
+                        
+                    </div>
+                </div>   
+                <div class="menu-item" data-id="4">   
+                    <div class="menu-img">
+                        <img src="изобр\мясо.jpg"lt=""width="300" height="250" class="menu-im">
+
+                    </div>
+                    <div class="menutxt">
+                        Мясо по-французски 
+                        <br>
+                        <div class="price">1500 рублей </div>
+                    </div>
+                    <div class="menus">
+                       вкуснейшая говядина под молодым картофелем с сыром
+                    </div>
+                    <div class="menubutt">
+                        <a href="corsina.html" class="menub">
+                            ЗАКАЗАТЬ
+                        </a>
+                    </div>
+                </div>
+                <div class="menu-item" data-id="5">
+                    <div class="menu-img">
+                        <img src="изобр\бизнеседа.jpg"lt=""width="300" height="250" class="menu-im">
+
+                    </div>
+                    <div class="menutxt">
+                        Бизнес ланч 
+                        <br> <div class="price">250 рублей</div>
+                    </div>
+                    <div class="menus">
+                        самое выгодное предложение
+                    </div>
+                    <div class="menubutt">
+                        <a href="corsina.html" class="menub">
+                            ЗАКАЗАТЬ
+                        </a>
+                        
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div> 
+    <script>
+const addToCartButtons = document.querySelectorAll('.menub');
+
+// назначаем обработчик события на клик
+addToCartButtons.forEach(button => {
+    button.addEventListener('click', function(event) {
+        event.preventDefault(); 
+
+        // название и ценa
+        const itemName = this.closest('.menu-item').querySelector('.menutxt').textContent;
+        const itemPrice =this.closest('.menu-item').querySelector('.price').textContent; 
+        const item = {
+            name: itemName,
+            price: itemPrice
+        };
+
+        // localStorage
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // товар в корзину
+        cart.push(item);
+
+        // Сохраняем обновленную корзину в localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        alert('Товар добавлен в корзину');
+        const cartItemsContainer = document.querySelector('.cart-items');
+        cartItemsContainer.innerHTML = ''; 
+
+        // Вывод
+        cart.forEach(item => {
+            const itemElement = document.createElement('div');
+            itemElement.textContent = `${item.name} - Цена: ${item.price} руб.`;
+            cartItemsContainer.appendChild(itemElement);
+        });
+
+        window.location.href = 'corsina.html';
+    });
+});
+</script>
+</script>
+    <hr>
+    <footer>
+        <p>Компания © TopMeal. Все права защищены.</p>
+        <p>
+            Почта: <a href="mailto:topmeal@yandex.ru">topmeal@yandex.ru</a>.
+          </p>
+      </footer>
+   
+    <script src="js/bootstrap.bundle.min.js" ></script> 
+</body>
+
+</html>
